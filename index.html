@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 15px;
+      }
+
+      .card {
+        width: 200px;
+        margin: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .card img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <center><h1>Birds</h1></center>
+    <div class="gallery" id="imageGallery"></div>
+
+    <script>
+      // JSON structure with image URLs
+      const imageJson = [
+        { image: "./assets/image (1).jpg" },
+        { image: "./assets/image (2).jpg" },
+        { image: "./assets/image (3).jpg" },
+        { image: "./assets/image (4).jpg" },
+        { image: "./assets/image (5).jpg" },
+        { image: "./assets/image (6).jpg" },
+        { image: "./assets/image (7).jpg" },
+        { image: "./assets/image (8).jpg" },
+        { image: "./assets/image (9).jpg" },
+        { image: "./assets/image (10).jpg" },
+        { image: "./assets/image (11).jpg" },
+        { image: "./assets/image (12).jpg" },
+        { image: "./assets/image (13).jpg" },
+        { image: "./assets/image (14).jpg" },
+        { image: "./assets/image (15).jpg" },
+        { image: "./assets/image (16).jpg" },
+        { image: "./assets/image (17).jpg" },
+        { image: "./assets/image (18).jpg" },
+        { image: "./assets/image (19).jpg" },
+        { image: "./assets/image (20).jpg" },
+        { image: "./assets/image (21).jpg" },
+        { image: "./assets/image (22).jpg" },
+        { image: "./assets/image (23).jpg" },
+        { image: "./assets/image (24).jpg" },
+        { image: "./assets/image (25).jpg" },
+      ];
+
+      // Function to dynamically load images 
+      function loadImages() {
+        const gallery = document.getElementById("imageGallery");
+
+        imageJson.forEach((item, index) => {
+          const card = document.createElement("div");
+          card.classList.add("card");
+
+          const image = document.createElement("img");
+          image.src = item.image;
+          image.alt = `Image ${index + 1}`;
+          // Add lazy loading 
+          image.loading = "lazy";
+
+          card.appendChild(image);
+          gallery.appendChild(card);
+        });
+      }
+
+      // Load images on page load
+      window.addEventListener("load", loadImages);
+    </script>
+  </body>
+</html>
